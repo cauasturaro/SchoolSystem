@@ -86,7 +86,7 @@ exports.deleteStudentById = async (req, res) => {
         if (rowCount === 0) 
             return res.status(404).send({ message: "Student wasn't found"});
 
-        res.status(200).send({ message: "Student was deleted successfuly"});
+        res.status(204).send({ message: "Student was deleted successfuly"});
     } catch (error) {
         console.error("SC", error);
         res.status(500).send({
