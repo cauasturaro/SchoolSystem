@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -13,4 +14,14 @@ pool.on('connect', () => {
     console.log('SC: Database Connected.');
 });
 
-module.exports = pool;
+const { sequilize } = require('sequelize');
+
+const sequelize = new sequilize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
+    dialect: 'postgres'
+});
+
+
+
+module.exports = { pool, sequilize };
+
