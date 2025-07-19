@@ -1,6 +1,6 @@
 ## Além das dependências instaladas, para o funcionamento correto da api realize os seguintes passos:
 
-- Criar banco de dados pg e tabela com campos: name, age, email e course
+- Criar banco de dados pg e tabela students com colunas: name, age, email e course
 
 - Adicionar arquivo .env com:
 <br>
