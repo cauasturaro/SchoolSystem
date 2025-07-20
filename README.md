@@ -35,7 +35,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-DB_HOST=localhost
+DB_HOST=localhost (postgres_db se utilizando docker)
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_NAME=schoolsystem
