@@ -1,5 +1,5 @@
 const { Student, Subject, Grade } = require('../models');
-const GradeService = require('../services/GradeService');
+const GradeService = require('./GradeService');
 
 class StudentService {
     static async create(data) {
