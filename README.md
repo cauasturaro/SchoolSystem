@@ -1,5 +1,4 @@
 
-````markdown
 # 📚 SchoolSystem API
 
 A complete RESTful API for managing students, subjects, and grades in a school environment.
