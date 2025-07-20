@@ -20,7 +20,7 @@ This project uses the following technologies:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/SchoolSystem.git
+git clone https://github.com/cauasturaro/students-api-crud-node.git
 cd SchoolSystem
 ````
 
