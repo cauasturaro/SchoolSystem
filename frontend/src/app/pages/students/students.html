@@ -1,0 +1,23 @@
+<div id="title">Students</div>
+<div id="searchBar">Search for student</div>
+
+<table id="students">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>age</th>
+            <th>email</th>
+            <th>course</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.course }}</td>
+        </tr>
+    </tbody>
+</table>
