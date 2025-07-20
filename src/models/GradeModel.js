@@ -1,5 +1,7 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { DataTypes, Sequelize } = require('sequelize');
+const { sequelize } = require('../config/database');
+const Student = require('./StudentModel'); 
+const Subject = require('./SubjectModel'); 
 
 const Grade = sequelize.define('Grade', {
     id: {
@@ -11,20 +13,20 @@ const Grade = sequelize.define('Grade', {
     studentId: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'students',
-            key: 'id'
+        model: 'students',
+        key: 'id'
         },
         allowNull: false,
     },
     subjectId: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'subjects',
-            key: 'id'
+        model: 'subjects',
+        key: 'id'
         },
         allowNull: false,
     },
-    value : {
+    value: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -33,7 +35,8 @@ const Grade = sequelize.define('Grade', {
         allowNull: false
     }
 }, {
-   tableName: 'grades',
+  tableName: 'grades',
+  timestamps: true
 });
 
 module.exports = Grade;

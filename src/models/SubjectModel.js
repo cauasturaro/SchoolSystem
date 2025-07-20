@@ -1,5 +1,6 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { DataTypes, Sequelize } = require('sequelize');
+const { sequelize } = require('../config/database');
+const Grade = require('./GradeModel');
 
 const Subject = sequelize.define('Subject', {
     id: {
@@ -22,6 +23,7 @@ const Subject = sequelize.define('Subject', {
     }
 }, {
    tableName: 'subjects',
+   timestamps: true
 });
 
 module.exports = Subject;

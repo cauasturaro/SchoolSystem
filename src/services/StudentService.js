@@ -1,4 +1,4 @@
-const Student = require('../models/StudentModel');
+const { Student, Subject, Grade } = require('../models');
 const GradeService = require('../services/GradeService');
 
 class StudentService {
@@ -6,7 +6,7 @@ class StudentService {
         return await Student.create(data);
     }
 
-    static async listAll() {
+    static async findAll() {
         return await Student.findAll();
     }
 
@@ -18,13 +18,27 @@ class StudentService {
     }
 
     static async update(id, data) {
-        const [ found ] = await Student.update(data, { where: { id} });
-        return found;
+        const [ rows ] = await Student.update(data, { where: { id} });
+        return rows;
     }
 
     static async delete(id){
-        const [ found ] = await Student.destroy({ where: { id } });
+        const found  = await Student.destroy({ where: { id } });
         return found;
+    }
+
+    static async showAllById(id) { 
+        const studentWithGrades = await Student.findByPk(id, {
+            include: {
+                model: Grade,
+                as: 'grades',
+                include: {
+                    model: Subject,
+                    as: 'subject'
+                }
+            }
+        });
+        return studentWithGrades;
     }
 }
 

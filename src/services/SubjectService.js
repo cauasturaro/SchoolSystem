@@ -5,7 +5,7 @@ class SubjectService {
         return await Subject.create(data);
     }
 
-    static async listAll() {
+    static async findAll() {
         return await Subject.findAll();
     }
 
@@ -13,13 +13,13 @@ class SubjectService {
         return await Subject.findByPk(id);
     }
 
-    static async update(id, data) {
-        const [ found ] = await Subject.update(data, { where: { id } });
-        return found;
+    static async update(data, options) {
+        const [rows] = await Subject.update(data, options);
+        return rows;
     }
 
     static async delete(id){
-        const [ found ] = await Subject.destroy({ where: { id } });
+        const found  = await Subject.destroy({ where: { id } });
         return found;
     }
 }

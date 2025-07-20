@@ -14,14 +14,19 @@ pool.on('connect', () => {
     console.log('SC: Database Connected.');
 });
 
-const { sequilize } = require('sequelize');
+const { Sequelize } = require('sequelize');
 
-const sequelize = new sequilize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+const sequelize = new Sequelize(
+    process.env.DB_DATABASE, 
+    process.env.DB_USER, 
+    process.env.DB_PASSWORD, 
+    {
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'postgres'
 });
 
 
 
-module.exports = { pool, sequilize };
+module.exports = { pool, sequelize };
 

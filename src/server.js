@@ -1,6 +1,6 @@
 const app = require('./app');
 const Student = require('./models/StudentModel');
-const sequelize = require('./config/database');
+const { sequelize } = require('./config/database');
 const PORT = 8080;
 
 sequelize.sync({ alter: true })

@@ -53,15 +53,19 @@ class StudentController {
     // UPDATE (id)
     static updateStudentById = async (req, res) => {
         const id = req.params.id;
-        const {name, age, email, course} = req.body;
+        const { name, age, email, course } = req.body;
 
         try {
-            const found = await await StudentService.update({ name, age, email, course, }, { where: { id } });
+            const studentExists = await StudentService.findById(id);
+            if (!studentExists)
+                return res.status(404).json({ error: "Student wasn't found" });
 
-            if (found === 0) 
-                return res.status(404).json({ error: "Student wasn't found or no changes to make"});
-            
-            res.status(200).json({ message: "Student updated"});
+            const rows = await StudentService.update(id, { name, age, email, course });
+
+            if (rows === 0)
+                return res.status(200).json({ message: "No changes were made" });
+
+            return res.status(200).json({ message: "Student updated" });
         } catch (error) {
             console.error("SC", error);
             res.status(500).json({ error: error.message });
@@ -84,6 +88,24 @@ class StudentController {
             res.status(500).json({ error: error.message });
         }
     }
+
+    static async showAllById(req, res) {
+        const id = req.params.id;
+
+        try {
+            const studentWithGrades = await StudentService.showAllById(id);
+
+            if (!studentWithGrades) {
+                return res.status(404).json({ message: 'Student wasn\'t found' });
+            }
+
+            return res.json(studentWithGrades);
+        } catch (error) {
+            console.error("SC", error);
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
 }
 
 module.exports = StudentController;

@@ -6,7 +6,7 @@ class GradeController {
     // CREATE
     static createGrade = async (req, res) => {
         try {
-            const grade = GradeService.create(req.body);
+            const grade = await GradeService.create(req.body);
             res.status(201).json(grade); 
         } catch (error) {
             console.error("SC", error);
@@ -17,7 +17,7 @@ class GradeController {
     // READ 
     static findAllGrades = async (req, res) => {
         try {
-            const grade = GradeService.findAll();
+            const grade = await GradeService.findAll();
             res.status(200).json(grade);
         } catch (error) {
             console.error("SC", error);
@@ -29,7 +29,7 @@ class GradeController {
     static findGradeById = async (req, res) => {
         const id = req.params.id;
         try {
-            const grade = GradeService.findById(id);
+            const grade = await GradeService.findById(id);
             res.status(200).json(grade);
         } catch (error) {
             console.error("SC", error);
@@ -40,20 +40,24 @@ class GradeController {
     // UPDATE (id)
     static updateGradeById = async (req, res) => {
         const id = req.params.id;
-        const {studentId, subject, value, course} = req.body;
+        const { studentId, subjectId, value, course } = req.body;  
 
         try {
-            const found = await GradeService.update({ studentId, subject, value, course, }, { where: { id } });
+            const gradeExists = await GradeService.findById(id);
+            if (!gradeExists)
+                return res.status(404).json({ error: "Grade wasn't found" });
 
-            if (found === 0) 
-                return res.status(404).json({ error: "Grade wasn't found or no changes to make"});
-            
-            res.status(200).json({ message: "Grade updated"});
+            const rows = await GradeService.update(id, { studentId, subjectId, value, course });
+
+            if (rows === 0)
+                return res.status(200).json({ message: "No changes were made" });
+
+            return res.status(200).json({ message: "Grade updated" });
         } catch (error) {
             console.error("SC", error);
             res.status(500).json({ error: error.message });
         }
-    }
+    }   
 
     // DELETE (id)
     static deleteGradeById = async (req, res) => {
