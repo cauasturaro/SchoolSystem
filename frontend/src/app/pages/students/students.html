@@ -1,23 +1,29 @@
 <div id="title">Students</div>
-<div id="searchBar">Search for student</div>
+<div id="searchBar">
+  <input type="text" placeholder="Search for student" [(ngModel)]="searchStudent" />
+</div>
 
-<table id="students">
+<div class="wrapper">
+    <table id="studentsTable">
     <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>age</th>
-            <th>email</th>
-            <th>course</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Course</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let student of students">
-            <td>{{ student.id }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.age }}</td>
-            <td>{{ student.email }}</td>
-            <td>{{ student.course }}</td>
-        </tr>
+        @for (student of filteredStudents(); track $index) {
+            <tr (click)="editStudent(student.id)"> <!--go to respective student edit page-->
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.course }}</td>
+            </tr>
+        }
     </tbody>
-</table>
+    </table>
+</div>
