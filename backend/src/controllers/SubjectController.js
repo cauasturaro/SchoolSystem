@@ -9,7 +9,7 @@ class SubjectController {
             const subject = await SubjectService.create(req.body);
             res.status(201).json(subject); 
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(400).json({ error: "Wasn't able to create subject" });
         }
     }
@@ -20,7 +20,7 @@ class SubjectController {
             const subject = await SubjectService.findAll();
             res.status(200).json(subject);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: "Wasn't able to list subjects" });
         }
     }
@@ -32,7 +32,7 @@ class SubjectController {
             const subject = await SubjectService.findById(id);
             res.status(200).json(subject);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             return res.status(404).send({ error: "Subject wasn't found"});
         }
     }
@@ -54,7 +54,7 @@ class SubjectController {
 
             return res.status(200).json({ message: "Subject updated" });
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: error.message });
         }
     }
@@ -71,7 +71,7 @@ class SubjectController {
             
             res.status(204).json({ message: "Subject deleted"});
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: error.message });
         }
     }

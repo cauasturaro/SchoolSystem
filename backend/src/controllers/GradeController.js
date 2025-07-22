@@ -9,7 +9,7 @@ class GradeController {
             const grade = await GradeService.create(req.body);
             res.status(201).json(grade); 
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(400).json({ error: "Wasn't able to create grade" });
         }
     }
@@ -20,7 +20,7 @@ class GradeController {
             const grade = await GradeService.findAll();
             res.status(200).json(grade);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: "Wasn't able to list grades" });
         }
     }
@@ -32,7 +32,7 @@ class GradeController {
             const grade = await GradeService.findById(id);
             res.status(200).json(grade);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             return res.status(404).send({ error: "Grade wasn't found"});
         }
     }
@@ -54,7 +54,7 @@ class GradeController {
 
             return res.status(200).json({ message: "Grade updated" });
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: error.message });
         }
     }   
@@ -71,7 +71,7 @@ class GradeController {
             
             res.status(204).json({ message: "Grade deleted"});
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: error.message });
         }
     }

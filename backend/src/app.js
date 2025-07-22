@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
+app.use(cors()); // to allow any origin to use the api
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 

@@ -9,7 +9,7 @@ class StudentController {
             const student = await StudentService.create(req.body);
             res.status(201).json(student); 
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(400).json({ error: "Wasn't able to create students" });
         }
     }
@@ -20,7 +20,7 @@ class StudentController {
             const students = await StudentService.findAll();
             res.status(200).json(students);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: "Wasn't able to list students" });
         }
     }
@@ -32,7 +32,7 @@ class StudentController {
             const student = await StudentService.findById(id);
             res.status(200).json(student);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             return res.status(404).send({ error: "Student wasn't found"});
         }
     }
@@ -45,7 +45,7 @@ class StudentController {
             const student = await StudentService.findGradesById(id);
             res.status(200).json(student);
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             return res.status(404).send({ error: "Student's grades weren't found"});
         }
     }
@@ -84,7 +84,7 @@ class StudentController {
             
             res.status(204).json({ message: "Student deleted"});
         } catch (error) {
-            console.error("SC", error);
+            console.error("[SS backend]", error);
             res.status(500).json({ error: error.message });
         }
     }
