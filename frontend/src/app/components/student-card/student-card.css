@@ -1,0 +1,98 @@
+#opacityFilter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#student-card {
+    background-color: #efefef;
+    border: 2px solid #768272;
+    border-radius: 12px;
+    padding: 24px;
+    width: 400px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#studentImage {
+    font-size: 20px;
+    font-weight: bold;
+    color: #5E8D52;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#changeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#changeForm input {
+    padding: 10px;
+    border: 1px solid #d0cece;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+button.save {
+     background-color: #5E8D52;
+}
+
+button.cancel {
+      background-color: #b7b7b7;
+}
+
+button.delete {
+     background-color: #cf4444;
+}
+
+button.save:hover {
+    background-color: #496c41;
+}
+
+button.cancel:hover {
+    background-color: #8a8a8a;
+}
+
+button.delete:hover {
+    background-color: #a73737;
+}
+/*
+#searchGradeBar, #gradesTable {
+    background-color: #e0e0e0;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+*/
+@media (max-width: 580px) {
+    #student-card {
+        width: 300px;
+    }
+}

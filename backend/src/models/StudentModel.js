@@ -15,7 +15,15 @@ const Student = sequelize.define('Student', {
     },
     age : {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            min: 1, 
+            isPositive(value) {
+                if (value <= 0) {
+                    throw new Error('[SS ERROR]: NUMBER MUST BE GREATER THEN 0');
+                }
+            }
+        }
     },
     email: {
         type: DataTypes.STRING,

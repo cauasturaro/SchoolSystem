@@ -1,0 +1,20 @@
+<div id="opacityFilter">
+    <div id="student-card">
+        <div id="studentImage">{{ student?.name }}</div>
+
+        <form id="changeForm">
+            <input type="text" [(ngModel)]="student.name" name="name" placeholder="Student's name" />
+            <input type="number" [(ngModel)]="student.age" name="age" placeholder="Student's age" />
+            <input type="email" [(ngModel)]="student.email" name="email" placeholder="Student's mail" />
+            <input type="text" [(ngModel)]="student.course" name="course" placeholder="Student's course" />
+        </form>
+
+        <div id="actions">
+            <button id="deleteStudent" class="delete" type="button" (click)="deleteStudent()">Delete Student</button>
+            <button id="cancel" class="cancel" type="button" (click)="onCancel()">Cancel</button>
+            <button id="saveChanges" class="save" type="button" (click)="saveChanges()">Save Changes</button>
+        </div>
+
+        <!--<div id="searchGradeBar"></div>-->
+    </div>
+</div>

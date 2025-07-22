@@ -28,7 +28,15 @@ const Grade = sequelize.define('Grade', {
     },
     value: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            min: 1, 
+            isPositive(value) {
+                if (value < 0) {
+                    throw new Error('[SS ERROR]: NUMBER MUST BE GREATER THEN 0');
+                }
+            }
+        }
     },
     course: {
         type: DataTypes.STRING,
