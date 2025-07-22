@@ -49,7 +49,6 @@ export class Students implements OnInit {
     });
   }
 
-
   filteredStudents(): Student[] {
     if (!this.searchStudent) return this.students;
 

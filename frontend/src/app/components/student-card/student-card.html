@@ -15,6 +15,43 @@
             <button id="saveChanges" class="save" type="button" (click)="saveChanges()">Save Changes</button>
         </div>
 
-        <!--<div id="searchGradeBar"></div>-->
+        <div id="searchBar">
+            <input type="text" placeholder="Search for grade" [(ngModel)]="searchGrade" />
+        </div>
+        
+        <div class="wrapper">
+            <table id="studentsTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Subject</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr > 
+                        <td>1</td>
+                        <td>Matemática</td>
+                        <td>8</td> 
+                    </tr>
+                    <tr > 
+                        <td>1</td>
+                        <td>Matemática</td>
+                        <td>8</td>
+                    </tr>
+                    <tr > 
+                        <td>1</td>
+                        <td>Matemática</td>
+                        <td>8</td>
+                    </tr>
+                    <tr > 
+                        <td>1</td>
+                        <td>Matemática</td>
+                        <td>8</td>
+                    </tr>
+                
+            </tbody>
+            </table>
+        </div>
     </div>
 </div>

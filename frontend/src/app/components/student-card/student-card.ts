@@ -10,6 +10,14 @@ interface Student {
   course: string;
 }
 
+interface Grade {
+  id: number;
+  studentId: number;
+  subjectId: number;
+  value: number;
+  course: string;
+}
+
 @Component({
   selector: 'app-student-card',
   standalone: true,
@@ -29,7 +37,6 @@ export class StudentCard {
     this.changed.emit(); //to erase changes that were made
     this.cancel.emit();
   }
-
 
   saveChanges() {
     if (!this.student?.id) return;
@@ -64,5 +71,7 @@ export class StudentCard {
     });
   }
 
+  searchGrade: string = '';
+  grades: Grade[] = [];
 
 }
