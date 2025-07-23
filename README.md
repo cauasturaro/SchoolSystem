@@ -25,45 +25,71 @@ git clone https://github.com/cauasturaro/SchoolSystem.git
 cd SchoolSystem
 ````
 
-### 2. Install dependencies
+## 🐳 Option A: Run the project using Docker (recommended)
 
-```bash
-npm install
-```
+> Requires: Docker and Docker Compose installed
 
-### 3. Configure your database
+### 1. Create environment file
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root with:
 
 ```env
-DB_HOST=localhost (postgres_db se utilizando docker)
+DB_HOST=postgres_db
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
-DB_NAME=schoolsystem
-DB_PORT=5432
+DB_DATABASE=schoolsystem
 ```
 
-### 4. Initialize the container (if using docker) or the database
+> ⚠️ Make sure to use `postgres_db` as the host (it's the name of the container).
+
+### 2. Start all services
 
 ```bash
 docker-compose up --build
 ```
 
-> Alternatively, if using Docker, run:
+* Backend: [http://localhost:8080/api/](http://localhost:8080/api/)
+* Frontend: [http://localhost/](http://localhost/)
 
-```bash
-npx sequelize-cli db:create
-npx sequelize-cli db:migrate
+> The PostgreSQL container will be initialized automatically.
+
+## 🧪 Option B: Run locally without Docker
+
+> Requires: Node.js, PostgreSQL and Angular CLI installed
+
+### 1. Set up PostgreSQL
+
+Create a local PostgreSQL database manually, then add a `.env` file in the root with your local config:
+
+```env
+DB_HOST=localhost
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_DATABASE=schoolsystem
+DB_PORT=5432
 ```
 
-### 5. Start the server (if not using docker)
+### 2. Start the backend
 
 ```bash
+cd backend
+npm install
+npx sequelize-cli db:create
+npx sequelize-cli db:migrate
 npm run dev
 ```
 
-The API will be running at:
-**[http://localhost:8080/api/](http://localhost:8080/api/)**
+Backend will be running at: **[http://localhost:8080/api/](http://localhost:8080/api/)**
+
+### 3. Start the frontend
+
+```bash
+cd ../frontend
+npm install
+ng serve
+```
+
+Frontend will be running at: **[http://localhost:4200/](http://localhost:4200/)**
 
 ---
 ## 📡 API Endpoints
