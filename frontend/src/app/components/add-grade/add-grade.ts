@@ -65,8 +65,8 @@ export class AddGrade implements OnChanges {
         this.changed.emit(); 
         this.cancel.emit();
       },
-      error: (erro) => {
-        console.error('[SS Error creating grade]', erro);
+      error: (error) => {
+        console.error('[SS Error creating grade]', error);
       }
     });
   }

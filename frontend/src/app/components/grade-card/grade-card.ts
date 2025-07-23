@@ -57,8 +57,8 @@ export class GradeCard{
         console.log('[SS API update]:', data);
         this.cancel.emit();
       },
-      error: (err) => {
-        console.error('Error updating grade', err);
+      error: (error) => {
+        console.error('Error updating grade', error);
       }
     });
   }

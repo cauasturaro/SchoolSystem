@@ -71,8 +71,8 @@ export class StudentCard implements OnInit{
         console.log('[SS API update]:', data);
         this.changed.emit();
       },
-      error: (err) => {
-        console.error('Error updating student', err);
+      error: (error) => {
+        console.error('Error updating student', error);
       }
     });
   }

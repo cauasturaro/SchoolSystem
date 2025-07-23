@@ -2,22 +2,21 @@ import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-interface Student {
-  id?: number;
+interface Subject {
+  id?:number;
   name: string;
-  age?: number;
-  email: string;
+  teacherName: string;
   course: string;
 }
 
 @Component({
-  selector: 'app-add-student',
+  selector: 'app-add-subject',
   standalone: true,
   imports: [HttpClientModule, FormsModule],
-  templateUrl: './add-student.html',
-  styleUrl: './add-student.css'
+  templateUrl: './add-subject.html',
+  styleUrl: './add-subject.css'
 })
-export class AddStudent{
+export class AddSubject{
 
   private http = inject(HttpClient);
 
@@ -29,28 +28,27 @@ export class AddStudent{
     this.cancel.emit();
   }
 
-  student: Student = {
+  subject: Subject = {
     id: 0,
     name: '',
-    age: undefined,
-    email: '',
+    teacherName: '',
     course: ''
   };
 
-  createStudent() {
-    const studentToCreate = { ...this.student };
-    delete studentToCreate.id;
+  createSubject() {
+    const subjectToCreate = { ...this.subject };
+    delete subjectToCreate.id;
 
-    this.http.post<Student>(
-      'http://localhost:8080/api/students',
-      studentToCreate
+    this.http.post<Subject>(
+      'http://localhost:8080/api/subjects',
+      subjectToCreate
     ).subscribe({
       next: (data) => {
-        console.log('[SS API create]: Student created:', data);
+        console.log('[SS API create]: Subject created:', data);
         this.changed.emit(); 
       },
       error: (error) => {
-        console.error('Error creating student:', error);
+        console.error('Error creating subject:', error);
       }
     });
   }

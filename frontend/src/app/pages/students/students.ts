@@ -45,8 +45,8 @@ export class Students implements OnInit {
         console.log('[SS API data]:', data);
         this.students = data;
       },
-      error: (err) => {
-        console.error('Error trying to fetch for students', err);
+      error: (error) => {
+        console.error('Error trying to fetch for students', error);
       }
     });
   }

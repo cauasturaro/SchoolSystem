@@ -13,8 +13,10 @@ class SubjectService {
         return await Subject.findByPk(id);
     }
 
-    static async update(data, options) {
-        const [rows] = await Subject.update(data, options);
+    static async update(id, data) {
+        delete data.id; // in casa id is already in data...
+
+        const [rows] = await Subject.update(data, { where: { id } });
         return rows;
     }
 

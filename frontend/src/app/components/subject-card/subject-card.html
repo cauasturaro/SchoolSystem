@@ -1,0 +1,18 @@
+<div id="opacityFilter">
+    <div id="subjectCard">
+        <div id="subjectName">{{ subject?.name }}</div>
+
+        <form id="changeForm">
+            <input type="text" [(ngModel)]="subject.name" name="name" placeholder="Subject's name" />
+            <input type="text" [(ngModel)]="subject.teacherName" name="teacherName" placeholder="Subject's teacher" />
+            <input type="text" [(ngModel)]="subject.course" name="course" placeholder="Subject's course" />
+        </form>
+
+        <div id="actions">
+            <button id="deleteStudent" class="delete" type="button" (click)="deleteSubject()">Delete Subject</button>
+            <button id="cancel" class="cancel" type="button" (click)="onCancel()">Cancel</button>
+            <button id="saveChanges" class="save" type="button" (click)="saveChanges()">Save Changes</button>
+        </div>
+    </div>
+</div>
+

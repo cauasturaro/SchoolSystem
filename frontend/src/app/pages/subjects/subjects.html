@@ -1,0 +1,47 @@
+@if (showSubjectCard) {
+    <app-subject-card 
+    [subject]="selectedSubject"
+    (cancel)="onCancel()"
+    (changed)="onChanged()">
+    </app-subject-card>
+}
+
+@if (showAddSubjectCard){
+    <app-add-subject
+    (cancel)="onCancelSubjectCreate()"
+    (changed)="onChanged()">
+    </app-add-subject>
+}
+
+<div id="title">Subjects</div>
+
+<div id="container">
+    <div id="searchBar">
+        <input type="text" placeholder="Search for subject" [(ngModel)]="searchSubject" />
+    </div>
+    <div id="addSubject" (click)="createSubject()">+</div>
+</div>
+
+<div class="wrapper">
+    <table id="subjectTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Teacher Name</th>
+            <th>Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (subject of filteredSubjects(); track $index) {
+            <tr (click)="editSubject(subject)"> 
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.name }}</td>
+                <td>{{ subject.teacherName }}</td>
+                <td>{{ subject.course }}</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+</div>
+
