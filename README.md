@@ -12,6 +12,7 @@ This project uses the following technologies:
 - **Sequelize** – ORM for interacting with a PostgreSQL database.
 - **PostgreSQL** – Relational database for persistent data storage.
 - **Docker** – Containerization for easy deployment and setup (optional).
+- **Angular** - SPA (Single Page Aplication) modern framework for the frontend
 
 ---
 
