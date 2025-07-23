@@ -6,16 +6,39 @@
     color: #5E8D52;
 }
 
-#searchBar {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 50px;
+#container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  margin-bottom: 40px;   
+  gap: 20px;               
+  flex-wrap: wrap;        
+}
+
+#addStudent {
+  background-color: #5E8D52;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.248);
+  transition: background-color 0.3s ease;
+}
+
+#addStudent:hover {
+  background-color: #76a56a;
 }
 
 #searchBar input {
     background-color: #99CA8A;
     padding: 10px;
-    width: 50%;
+    width: 350px;
     max-width: 400px;
     font-size: 15px;
     font-weight: bold;
@@ -78,13 +101,17 @@
 
 @media (max-width: 780px) {
 
+    #container {
+        gap: 10px
+    }
+
     #title {
         font-size: 60px;
     }
 
     #searchBar input {
         font-size: 15px;
-        width: 80%;
+        width: 300px;
     }
 
     #studentsTable th, 
@@ -96,8 +123,8 @@
 
 @media (max-width: 500px) {
 
-    #searchBar {
-        margin-bottom: 40px;
+    #container {
+        gap: 10px
     }
 
     #title {
@@ -107,9 +134,8 @@
 
     #searchBar input {
         font-size: 12px;
-        width: 80%;
+        width: 200px;
     }
-
 
     #studentsTable th, 
     #studentsTable td {
