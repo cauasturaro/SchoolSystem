@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StudentCard } from '../../components/student-card/student-card';
+import { AddStudent } from '../../components/add-student/add-student';
 
 interface Student {
   id: number;
@@ -16,13 +17,14 @@ interface Student {
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, StudentCard],
+  imports: [CommonModule, FormsModule, HttpClientModule, StudentCard, AddStudent],
   templateUrl: './students.html',
   styleUrls: ['./students.css']
 })
 export class Students implements OnInit {
 
   showStudentCard: boolean = false;
+  showAddStudentCard: boolean = false;
 
   private http = inject(HttpClient);
   private router = inject(Router);
@@ -66,9 +68,14 @@ export class Students implements OnInit {
     this.showStudentCard = false;
   }
 
+  onCancelStudentCreate() {
+    this.showAddStudentCard = false;
+  }
+
   onChanged() {
     this.fetchData();
     this.onCancel();
+    this.onCancelStudentCreate();
   }
 
   selectedStudent!: Student;
@@ -76,5 +83,9 @@ export class Students implements OnInit {
   editStudent(student: Student) {
     this.selectedStudent = student;
     this.showStudentCard = true;
+  }
+
+  createStudent() {
+    this.showAddStudentCard = true;
   }
 }

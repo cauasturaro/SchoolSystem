@@ -1,0 +1,18 @@
+<div id="opacityFilter">
+    <div id="addStudentCard">
+        <div id="title">Create Student</div>
+
+        <form id="changeForm">
+            <input type="text" name="name" placeholder="Student's name" [(ngModel)]="student.name" />
+            <input type="number" name="age" placeholder="Student's age" [(ngModel)]="student.age" />
+            <input type="email" name="email" placeholder="Student's mail" [(ngModel)]="student.email" />
+            <input type="text" name="course" placeholder="Student's course" [(ngModel)]="student.course" />
+        </form>
+
+        <div id="actions">
+            <button id="cancel" class="cancel" type="button" (click)="onCancel()">Cancel</button>
+            <button id="createStudent" class="create" type="button" (click)="createStudent()">Create Student</button>
+        </div>
+    </div>
+</div>
+

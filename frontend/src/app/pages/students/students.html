@@ -6,6 +6,12 @@
     </app-student-card>
 }
 
+@if (showAddStudentCard){
+    <app-add-student
+    (cancel)="onCancelStudentCreate()"
+    (changed)="onChanged()">
+    </app-add-student>
+}
 
 <div id="title">Students</div>
 
@@ -13,7 +19,7 @@
     <div id="searchBar">
         <input type="text" placeholder="Search for student" [(ngModel)]="searchStudent" />
     </div>
-    <div id="addStudent">+</div>
+    <div id="addStudent" (click)="createStudent()">+</div>
 </div>
 
 <div class="wrapper">
