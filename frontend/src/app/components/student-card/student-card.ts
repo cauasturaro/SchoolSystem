@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GradeCard } from '../grade-card/grade-card';
+import { AddGrade } from "../add-grade/add-grade";
 
 interface Student {
   id: number;
@@ -29,7 +30,7 @@ interface Grade {
 @Component({
   selector: 'app-student-card',
   standalone: true,
-  imports: [HttpClientModule, FormsModule, GradeCard],
+  imports: [HttpClientModule, FormsModule, GradeCard, AddGrade],
   templateUrl: './student-card.html',
   styleUrl: './student-card.css'
 })
@@ -54,6 +55,9 @@ export class StudentCard implements OnInit{
 
   onCancelGrade() {
     this.showGradeCard = false;
+  }
+  onCancelAddGrade() {
+    this.showAddGradeCard = false;
   }
 
   saveChanges() {
@@ -133,6 +137,7 @@ export class StudentCard implements OnInit{
   }
 
   showGradeCard: boolean = false;
+  showAddGradeCard: boolean = false;
 
   selectedGrade!: Grade;
   selectedSubject!: string
@@ -141,6 +146,11 @@ export class StudentCard implements OnInit{
     this.selectedGrade = grade;
     this.showGradeCard = true;
     this.selectedSubject = this.subjectMap.get(grade.subjectId) || "";
+  }
+
+
+  createGrade() {
+    this.showAddGradeCard = true;
   }
 
   onChanged() {

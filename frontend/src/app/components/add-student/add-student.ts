@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 interface Student {
   id?: number;
   name: string;
-  age: number;
+  age?: number;
   email: string;
   course: string;
 }
@@ -32,7 +32,7 @@ export class AddStudent{
   student: Student = {
     id: 0,
     name: '',
-    age: 0,
+    age: undefined,
     email: '',
     course: ''
   };

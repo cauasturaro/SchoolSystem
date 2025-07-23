@@ -7,6 +7,15 @@
     </app-grade-card>
 }
 
+@if (showAddGradeCard) {
+    <app-add-grade
+        [student] = "student"
+        (cancel)="onCancelAddGrade()"
+        (changed)="onChanged()">
+    </app-add-grade>
+}
+
+
 
 <div id="opacityFilter">
     <div id="student-card">
@@ -25,8 +34,11 @@
             <button id="saveChanges" class="save" type="button" (click)="saveChanges()">Save Changes</button>
         </div>
 
-        <div id="searchBar">
-            <input type="text" placeholder="Search for grade" [(ngModel)]="searchGrade" />
+        <div id="container">
+            <div id="searchBar">
+                <input type="text" placeholder="Search for grade" [(ngModel)]="searchGrade" />
+            </div>
+            <div id="addGrade" (click)="createGrade()">+</div>
         </div>
         
         <div class="wrapper">
@@ -41,16 +53,6 @@
             <tbody>
                 @for (grade of filteredGrades(); track $index) {
                     <tr (click)="editGrade(grade)"> 
-                        <td>{{ grade.id }}</td>
-                        <td>{{ subjectMap.get(grade.subjectId) }}</td>
-                        <td>{{ grade.value }}</td>
-                    </tr>
-                                        <tr (click)="editGrade(grade)"> 
-                        <td>{{ grade.id }}</td>
-                        <td>{{ subjectMap.get(grade.subjectId) }}</td>
-                        <td>{{ grade.value }}</td>
-                    </tr>
-                                        <tr (click)="editGrade(grade)"> 
                         <td>{{ grade.id }}</td>
                         <td>{{ subjectMap.get(grade.subjectId) }}</td>
                         <td>{{ grade.value }}</td>

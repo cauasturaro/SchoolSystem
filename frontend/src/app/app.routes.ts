@@ -7,7 +7,4 @@ import { GradeCard } from './components/grade-card/grade-card';
 export const routes: Routes = [
     {path: '', component: Home },
     {path: 'students', component: Students },
-    {path: 'student', component: StudentCard },
-    {path: 'grade', component: GradeCard}
-
 ];

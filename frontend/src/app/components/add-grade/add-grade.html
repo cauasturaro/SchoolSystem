@@ -1,0 +1,15 @@
+<div id="container">
+    <div id="addGradeCard">
+        <div id="title">Create Grade</div>
+
+        <form id="changeForm">
+            <input type="number" [(ngModel)]="grade.value" name="value" placeholder="Grade" />
+            <input type="number" [(ngModel)]="grade.subjectId" name="subjectId" placeholder="Subject Id" />
+        </form>
+
+        <div id="actions">
+            <button class="cancel" type="button" (click)="onCancel()">Cancel</button>
+            <button class="create" type="button" (click)="createGrade()">Create Grade</button>
+        </div>
+    </div>
+</div>
