@@ -16,18 +16,30 @@ services:
       - backend
 
   api:
-    build: .
-    container_name: school_api
+    build: 
+      context: ./backend
+      dockerfile: dockerfile  
     ports:
       - "8080:8080"
     environment:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: db
+      DB_HOST: db         
       DB_PORT: 5432
       DB_DATABASE: ${DB_DATABASE}
     depends_on:
       - db
+    networks:
+      - backend
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api
     networks:
       - backend
 
