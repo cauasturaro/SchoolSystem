@@ -1,6 +1,16 @@
+@if (showGradeCard) {
+    <app-grade-card 
+    [grade]="selectedGrade"
+    [subjectName]="selectedSubject"
+    (cancel)="onCancelGrade()"
+    (changed)="onChanged()">
+    </app-grade-card>
+}
+
+
 <div id="opacityFilter">
     <div id="student-card">
-        <div id="studentImage">{{ student?.name }}</div>
+        <div id="studentName">{{ student?.name }}</div>
 
         <form id="changeForm">
             <input type="text" [(ngModel)]="student.name" name="name" placeholder="Student's name" />
@@ -29,29 +39,26 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr > 
-                        <td>1</td>
-                        <td>Matemática</td>
-                        <td>8</td> 
+                @for (grade of filteredGrades(); track $index) {
+                    <tr (click)="editGrade(grade)"> 
+                        <td>{{ grade.id }}</td>
+                        <td>{{ subjectMap.get(grade.subjectId) }}</td>
+                        <td>{{ grade.value }}</td>
                     </tr>
-                    <tr > 
-                        <td>1</td>
-                        <td>Matemática</td>
-                        <td>8</td>
+                                        <tr (click)="editGrade(grade)"> 
+                        <td>{{ grade.id }}</td>
+                        <td>{{ subjectMap.get(grade.subjectId) }}</td>
+                        <td>{{ grade.value }}</td>
                     </tr>
-                    <tr > 
-                        <td>1</td>
-                        <td>Matemática</td>
-                        <td>8</td>
+                                        <tr (click)="editGrade(grade)"> 
+                        <td>{{ grade.id }}</td>
+                        <td>{{ subjectMap.get(grade.subjectId) }}</td>
+                        <td>{{ grade.value }}</td>
                     </tr>
-                    <tr > 
-                        <td>1</td>
-                        <td>Matemática</td>
-                        <td>8</td>
-                    </tr>
-                
+                }   
             </tbody>
             </table>
         </div>
     </div>
 </div>
+

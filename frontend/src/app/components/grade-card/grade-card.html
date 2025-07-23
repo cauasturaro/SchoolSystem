@@ -1,0 +1,19 @@
+<div id="container">
+    <div id="grade-card">
+        <div id="subjectName">{{ subjectName }}</div>
+
+        <form id="changeForm">
+            <input type="number" [(ngModel)]="grade.value" name="value" placeholder="Grade" />
+            <input type="number" [(ngModel)]="grade.studentId" name="studentId" placeholder="Grade's Student Id" />
+            <input type="number" [(ngModel)]="grade.subjectId" name="subjectId" placeholder="Grade's Subject Id" />
+            <input type="text" [(ngModel)]="grade.course" name="course" placeholder="Grade's course" />
+        </form>
+
+        <div id="actions">
+            <button id="deleteGrade" class="delete" type="button" (click)="deleteGrade()">Delete Grade</button>
+            <button id="cancel" class="cancel" type="button" (click)="onCancel()">Cancel</button>
+            <button id="saveChanges" class="save" type="button" (click)="saveChanges()">Save Changes</button>
+        </div>
+    </div>
+</div>
+

@@ -51,10 +51,10 @@
 
 #studentsTable th, 
 #studentsTable td {
-    padding: 14px 18px;
+    padding: 8px 15px;
     border: 1px solid #c9c9c9aa;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #studentsTable thead {
@@ -89,7 +89,7 @@
 
     #studentsTable th, 
     #studentsTable td {
-        padding: 10px 8px;
+        padding: 8px 8px;
         font-size: 12px;
     }
 }
@@ -110,9 +110,10 @@
         width: 80%;
     }
 
+
     #studentsTable th, 
     #studentsTable td {
-        padding: 10px 6px;
+        padding: 8px 6px;
         font-size: 10px;
     }
 }

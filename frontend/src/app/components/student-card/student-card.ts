@@ -1,12 +1,20 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { GradeCard } from '../grade-card/grade-card';
 
 interface Student {
   id: number;
   name: string;
   age: number;
   email: string;
+  course: string;
+}
+
+interface Subject {
+  id:number;
+  name: string;
+  teacherName: string;
   course: string;
 }
 
@@ -21,11 +29,11 @@ interface Grade {
 @Component({
   selector: 'app-student-card',
   standalone: true,
-  imports: [HttpClientModule, FormsModule],
+  imports: [HttpClientModule, FormsModule, GradeCard],
   templateUrl: './student-card.html',
   styleUrl: './student-card.css'
 })
-export class StudentCard {
+export class StudentCard implements OnInit{
 
   private http = inject(HttpClient);
 
@@ -33,9 +41,19 @@ export class StudentCard {
   @Output() cancel = new EventEmitter<void>();
   @Output() changed = new EventEmitter<void>();
 
+  ngOnInit(): void {
+    if (this.student?.id) {
+      this.fetchData();
+    }
+  }
+
   onCancel() {
     this.changed.emit(); //to erase changes that were made
     this.cancel.emit();
+  }
+
+  onCancelGrade() {
+    this.showGradeCard = false;
   }
 
   saveChanges() {
@@ -73,5 +91,60 @@ export class StudentCard {
 
   searchGrade: string = '';
   grades: Grade[] = [];
+
+  subjectMap = new Map<number, string>();
+
+  fetchData() {
+    this.http.get<Grade[]>(`http://localhost:8080/api/students/${this.student.id}/grades`)
+      .subscribe({
+        next: (data) => {
+          console.log('[SS API data]:', data);
+          this.grades = data;
+          this.loadSubjects(data);
+        },
+        error: (err) => {
+          console.error('Error trying to fetch for grades', err);
+        }
+    });
+  }
+
+  loadSubjects(grades: Grade[]) {
+    const subjectIds = [...new Set(grades.map(g => g.subjectId))];
+
+    subjectIds.forEach(id => {
+    this.http.get<Subject>(`http://localhost:8080/api/subjects/${id}`)
+      .subscribe({
+        next: (subject) => {
+          this.subjectMap.set(subject.id, subject.name.toLowerCase());
+        }
+      });
+  });
+  }
+
+  filteredGrades(): Grade[] {
+    if (!this.searchGrade) return this.grades;
+
+    const search = this.searchGrade.toLowerCase();
+
+    return this.grades.filter(grade =>
+      String(grade.id).includes(search) ||
+      this.subjectMap.get(grade.subjectId)?.includes(search)
+    );
+  }
+
+  showGradeCard: boolean = false;
+
+  selectedGrade!: Grade;
+  selectedSubject!: string
+
+  editGrade(grade: Grade) {
+    this.selectedGrade = grade;
+    this.showGradeCard = true;
+    this.selectedSubject = this.subjectMap.get(grade.subjectId) || "";
+  }
+
+  onChanged() {
+    this.fetchData();
+  }
 
 }
