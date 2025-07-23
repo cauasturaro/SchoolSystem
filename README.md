@@ -1,5 +1,5 @@
 
-# 📚 SchoolSystem API
+# 📚 School System 
 
 A complete RESTful API for managing students, subjects, and grades in a school environment.
 
