@@ -21,8 +21,8 @@ This project uses the following technologies:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/cauasturaro/students-api-crud-node.git
-cd students-api-crud-node
+git clone https://github.com/cauasturaro/SchoolSystem.git
+cd SchoolSystem
 ````
 
 ### 2. Install dependencies
